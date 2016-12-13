@@ -3,6 +3,7 @@ import java.io.*;
 public class ShowText{
 	public static void main(String[] args){
 		String fileName = args[0];
+		String keyword = args[1];
 		FileReader fr = null;
 		BufferedReader br = null;
 
@@ -12,7 +13,11 @@ public class ShowText{
 
 			String data;
 			while((data=br.readLine()) != null){
-				System.out.println(data);
+				// System.out.println(data);
+				if(data.contains(keyword)){
+					System.out.println(data);
+					System.out.println("KWD,Found!");
+				}
 			}
 
 			br.close();
