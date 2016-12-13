@@ -4,6 +4,9 @@ public class Aloha{
 			System.out.print("input data > ");
 			String data = new java.util.Scanner(System.in).nextLine();
 			System.out.println(data);
+			if(data.equals("")){
+				break;
+			}
 		}
 	}
 }
