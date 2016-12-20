@@ -6,18 +6,20 @@ public class AlohaWindow {
 		//windowを作る
 		JFrame frame = new JFrame();
 		//windowのサイズ
-		frame.setSize(200,200);
+		frame.setSize(300,200);
 		//windowのタイトル
 		frame.setTitle("オウハク");
 		//windowがを終わるとき、プログラムも終わる
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//"HELLO"と表示するラベル(JLabel)を作る
+		frame.setLayout(new FlowLayout());
 		JLabel label = new JLabel("HELLO");
 		Container ctnr = frame.getContentPane();
-		ctnr.add(label,BorderLayout.CENTER);
+		ctnr.add(label);
 		//ボタンを作る
 		JButton button = new JButton("Click Me!");
-		ctnr.add(button,BorderLayout.SOUTH);
+		Container ctnr2 = frame.getContentPane();
+		ctnr2.add(button);
 		//windowを表示する
 		frame.setVisible(true);
 	}
