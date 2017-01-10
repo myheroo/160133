@@ -1,9 +1,18 @@
 public class Aloha{
 	public static void main(String[] args){
+		int data0 = Integer.parseInt(args[0]);
+		String data1 = args[1];
+		String data2 = args[2];
+		int data3 = Integer.parseInt(args[3]);
+
 		Alohaman am = new Alohaman();
+		Alohaman bm = new Alohaman(data1,data2);
+
+		
 		am.sayAloha();
-		am.sayAloha(Integer.parseInt(args[0]));
-		am.sayAloha(Integer.parseInt(args[1]),Integer.parseInt(args[2]));
+		am.sayAloha(data0);
+//		am.sayAloha(Integer.parseInt(args[1]),Integer.parseInt(args[2]));
+		bm.sayAloha(data0,data3);
 	}
 }
 
@@ -14,6 +23,11 @@ class Alohaman{
 	public Alohaman(){
 		this.msg = "ALOHA!";
 		this.msg2 = "アロハ！";
+	}
+
+	public Alohaman(String m1, String m2){
+		this.msg = m1;
+		this.msg2 = m2;
 	}
 
 	public void sayAloha(){
