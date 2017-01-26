@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>Createjs</title>
+	<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+	<script>
+	function init(){
+		var stage = new createjs.Stage("myCanvas");
+		var img = new createjs.Bitmap("original.jpg");
+		var bounds = img.getBounds();
+		img.setBounds(200,200,50,50);
+		
+		stage.addChild(img);
+		createjs.Ticker.on("tick",function(){
+			stage.update();
+		});
+	}
+	</script>
+</head>
+<body>
+<canvas id="myCanvas" width="640" height="320"></canvas>
+</body>
+</html>

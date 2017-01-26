@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+  <script>
+    window.addEventListener("load", init);
+
+    function init() {
+      // Stageオブジェクトを作成します
+      var stage = new createjs.Stage("myCanvas");
+
+      // 円を作成します
+      var shape = new createjs.Shape();
+      shape.graphics.beginFill("blue"); // 赤色で描画するように設定
+      shape.graphics.drawCircle(60,60, 40); //半径 100px の円を描画
+      // 四角形を作成します
+      shape.graphics.beginFill("DarkRed"); // 赤色で描画するように設定
+      shape.graphics.drawRect(120, 20, 80, 80); // 長方形を描画
+      shape.graphics.beginFill("green");
+      shape.graphics.drawRoundRect(230, 20, 80, 80, 20, 20); //100pxの正方形を描画。20pxの角丸を設定。
+      shape.graphics.beginFill("red"); // 赤色で描画するように設定
+      shape.graphics.drawPolyStar(380, 60, 50, 5, 0.6, -90); //75pxの星を記述
+
+      shape.graphics.beginFill("pink") // 赤色で描画するように設定
+            .moveTo(0, 0) // (0,0)座標から描き始める
+            .lineTo(100, 0) // (100,0)座標まで辺を描く
+            .lineTo(0, 100) // (0,100)座標まで辺を描く
+            .lineTo(0, 0); // (0,0)座標まで辺を描く
+      
+      stage.addChild(shape); // 表示リストに追加
+
+      var txt = new createjs.Text("ALOHA!", "24px serif", "DarkRed");
+      txt.x = 200;
+      txt.y = 200;
+      txt.textAlign = "center";
+      stage.addChild(txt);
+
+      
+
+      // Stageの描画を更新します
+      stage.update();
+    }
+  </script>
+</head>
+<body>
+  <canvas id="myCanvas" width="640" height="320"></canvas>
+</body>
+</html>
