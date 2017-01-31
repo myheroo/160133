@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>CreateJS</title>
+</head>
+<body>
+	<h1>CreateJS</h1>
+	<hr>
+	<canvas id="myCanvas" width="900" height="600"></canvas>
+	<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+  	<script>
+  		window.addEventListener('load', init);
+  		function init(){
+  			var stage = new createjs.Stage("myCanvas");
+  			var shape = new createjs.Shape();
+
+  			shape.graphics.beginFill("#ff0000");
+  			shape.graphics.drawRect(100, 100, 80, 80);
+  			shape.x = 0;
+  			stage.addChild(shape);
+
+  			var muki =+ 1;
+  			var v = 1;
+  			createjs.Ticker.on('tick',function(){
+  				
+  				shape.x += 5 * muki *v;
+
+  				if(shape.x>600){
+  					muki = -1;  					
+  				}
+  				if(shape.x<10){
+  					muki = 1;
+  				}
+
+  				stage.update();  		
+  			})
+
+  			shape.addEventListener('click', handleClick);
+  			shape.addEventListener('mouseover', handleMouseOver);
+
+			var flag = 0;
+	  		function handleClick(event){	
+	  			v = v * 2;  			
+	  			if(flag == 0){
+	  				shape.graphics.clear();
+					shape.graphics.beginFill("#0000ff");
+					shape.graphics.drawRect(100, 100, 80, 80);
+					flag =1;					
+	  			} else {
+	  				shape.graphics.clear();
+					shape.graphics.beginFill("#ff0000");
+					shape.graphics.drawRect(100, 100, 80, 80);
+					flag = 0;
+	  			}
+	  		}
+	  		function handleMouseOver(event){
+	  			alert("ALOHA");
+	  		}
+	  	}
+  	</script>
+</body>
+</html>
