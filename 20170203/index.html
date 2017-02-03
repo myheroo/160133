@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>createjs: keyboard</title>
+</head>
+<body>
+	<h1>createjs: keyboard</h1>
+	<hr>
+
+	<canvas id="myCanvas" width="900" height="600"></canvas>
+
+	<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+	<script>
+		window.addEventListener('load',init);
+
+		function init() {
+			var stage = new createjs.Stage('myCanvas');
+			var shape = new createjs.Shape();
+			var shape2 = new createjs.Shape();
+
+			shape.graphics.beginFill("#0000ff");
+			shape.graphics.drawRect(0, 0, 100, 100);
+			shape2.graphics.beginFill("#f0f00e");
+			shape2.graphics.drawRect(0, 0, 200, 200);
+			shape2.x = 500;
+
+			stage.addChild(shape);
+			stage.addChild(shape2)
+			stage.update();
+			window.addEventListener('keydown', handleKeydown);
+
+			var muki = 0;
+			var tate = 1;
+			function handleKeydown(event){
+				var keyCode = event.keyCode;
+				if(keyCode == 39)muki = +1, tate = 0;
+				if(keyCode == 37)muki = -1, tate = 0;
+				if(keyCode == 40)tate = +1, muki = 0;
+				if(keyCode == 38)tate = -1, muki = 0;
+				if(keyCode == 32)tate = 0, muki = 0;
+			}
+			createjs.Ticker.on('tick', function(){
+				shape.x += 4 * muki;
+				shape.y += 4 * tate;
+
+				var point = shape2.localToLocal(50,50,shape);
+				var isHit = shape.hitTest(point.x, point.y);
+				if(isHit == true){
+					shape2.graphics.clear();
+					shape2.graphics.beginFill("#ff0000");
+					shape2.graphics.drawRect(0, 0, 100, 100);
+				} else {
+					shape2.graphics.clear();
+					shape2.graphics.beginFill("#000000");
+					shape2.graphics.drawRect(0, 0, 100,100);
+				}
+				stage.update();
+			});
+		}
+	</script>
+</body>
+</html>
